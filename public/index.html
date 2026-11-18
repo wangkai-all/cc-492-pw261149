@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>补货分析台 · 库存情景模拟</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232a78d6'/%3E%3Cpath d='M4 17l4.5-6 3.5 4.5L15 11l5 6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 17.5 8.5 9l4 5.5L16 10l5 7.5"/>
+            <path d="M3 21h18"/>
+          </svg>
+        </div>
+        <div>
+          <h1>补货分析台</h1>
+          <p>库存情景模拟 · 结果不覆盖正式计划</p>
+        </div>
+      </div>
+      <div class="topbar-meta">
+        <div class="plan-chip" id="active-plan-chip" title="当前正式计划">加载中…</div>
+        <label class="actor-field">
+          <span>操作人</span>
+          <input id="actor-input" value="planner" maxlength="40" autocomplete="off">
+        </label>
+        <button class="icon-btn" id="theme-toggle" title="切换明暗主题" aria-label="切换明暗主题">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <h2>情景</h2>
+          <button class="btn btn-primary btn-sm" id="new-scenario">＋ 新建</button>
+        </div>
+        <div class="dataset-row">
+          <label for="dataset-select">数据版本</label>
+          <select id="dataset-select"></select>
+        </div>
+        <ul class="scenario-list" id="scenario-list"></ul>
+        <div class="sidebar-foot">
+          <span class="muted">引擎</span>
+          <code id="engine-version">—</code>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="tabs" role="tablist">
+          <button class="tab is-active" data-tab="workspace" role="tab">情景工作台</button>
+          <button class="tab" data-tab="compare" role="tab">方案比较</button>
+          <button class="tab" data-tab="approval" role="tab">审批与记录 <span class="tab-badge" id="approval-badge" hidden></span></button>
+          <button class="tab" data-tab="plans" role="tab">正式计划</button>
+        </div>
+        <section class="tab-panel is-active" id="panel-workspace"></section>
+        <section class="tab-panel" id="panel-compare"></section>
+        <section class="tab-panel" id="panel-approval"></section>
+        <section class="tab-panel" id="panel-plans"></section>
+      </main>
+    </div>
+  </div>
+  <div id="modal-root"></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

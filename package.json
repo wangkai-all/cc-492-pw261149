@@ -1,0 +1,16 @@
+{
+  "name": "inventory-scenario-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "库存补货分析与情景模拟：可复现的参数/数据版本、方案比较、差异与审批",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node scripts/seed.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=22.5"
+  }
+}
